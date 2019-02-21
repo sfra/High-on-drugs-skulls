@@ -78,7 +78,7 @@ export class MMatrix<T> extends DoubleIterator<T> {
   }
 
   /**
-   * Write a value to item at the given coordinates.
+   * Write a value to item at the given coordinates.[1,2,2,3,3,4]
    *
    * @param {number} x
    * @param {number} y

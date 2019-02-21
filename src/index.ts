@@ -1,5 +1,5 @@
 import { MMatrix } from './classes/MMatrix';
-//console.log(MMatrix);
+
 
 const m:MMatrix<number> = new MMatrix<number>(3,2);
 
