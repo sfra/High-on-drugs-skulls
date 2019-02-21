@@ -1,0 +1,28 @@
+{
+  "name": "tile_game_logic",
+  "version": "1.0.0",
+  "description": "logic for mobile game",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node js/index.js",
+    "test": "jest",
+    "visual": "tsuml --glob ./src/classes/**/*.ts",
+    "doc": "jsdoc -c jsdoc.json -d docs js/classes/"
+  },
+  "keywords": [
+    "game",
+    "typescript"
+  ],
+  "author": "Szymon Frankowski <sz.frankyy@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.6",
+    "jest": "^24.1.0",
+    "jsdoc": "^3.5.5",
+    "jsdoc-inheritance-diagram": "^1.2.3",
+    "ts-jest": "^24.0.0",
+    "tsuml": "0.0.1-alpha.8",
+    "typescript": "^3.3.3"
+  }
+}

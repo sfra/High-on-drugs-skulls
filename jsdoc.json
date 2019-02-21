@@ -1,0 +1,13 @@
+{
+    "plugins":["node_modules/jsdoc-inheritance-diagram"],
+    "opts": {
+        "inheritance-diagram": {
+            "css": ".parent rect {fill: lightgray;}",
+            "node": {
+                "dimensions": {
+                    "width": 80
+                }
+            }
+        }
+    }
+}
