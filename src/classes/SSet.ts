@@ -1,25 +1,26 @@
-export default class SSet<T>{
+export default class SSet<T> extends Set<T>{
 
-    constructor(set:Set<T>=new Set<T>()){
-        this.set = set;
+    constructor(){
+        super();
+        
     };
 
-    private set:Set<T>;
+ 
     
 
     public static equality:(a:any, b:any)=>boolean;
 
-    public add(el:T):SSet<T> {
+    public sadd(el:T):SSet<T> {
         
 
         
         let contains = false;
-        this.set.forEach((inside )=> {
+        super.forEach((inside )=> {
             contains = contains || SSet.equality(el,inside);
         });
-s
+
         if(!contains) {
-            this.set.add(el );
+            super.add(el);
         }
         
         return this;

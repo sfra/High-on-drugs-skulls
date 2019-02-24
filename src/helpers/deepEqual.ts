@@ -3,8 +3,8 @@ export default function deepEqual(a:any, b:any):boolean {
 	if (Array.isArray(a)) {
 
 
-		return a.length === b.length && ((a.length === 1 && a[0] === b[1]) || a.reduce((p, n, i) => {
-			return eq && deepEqual(n, b[i]);
+		return a.length === b.length && ((a.length === 1 && a[0] === b[0]) || a.reduce((p, n, i) => {
+			return eq && deepEqual(n, b[i]) && deepEqual(a[0],b[0]);
 		}));
 	};
 
