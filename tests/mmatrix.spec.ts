@@ -11,6 +11,8 @@ describe('MMatrix test', () => {
     expect(mm.getDy()).toEqual(2);// check dimmension y
     expect(mm.getItem(1,1)).toEqual(5);
   
+    expect(mm.validateX(1)).toBeTruthy();
+    expect(mm.validateY(10)).toBeFalsy();
     mm.setItem(2,1,88);
     expect(mm.getArray()).toEqual([[2,3],[13,5],[7,88]]);
   });
@@ -28,8 +30,12 @@ describe('MMatrix test', () => {
     
     expect(mm.nextX()).toBeFalsy();
     expect(mm.nextY()).toBeFalsy();
+
     expect(mm.getIterator()).toEqual(88); //check range of the iterator
-    
+    mm.rewindX();
+    expect(mm.getDx()).toEqual(3);
+    mm.rewindY();
+    expect(mm.getDy()).toEqual(2);    
   });
 
   test('Extend MMatrix',()=>{

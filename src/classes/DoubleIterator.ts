@@ -110,7 +110,7 @@ export default abstract class DoubleIterator<T> implements DoubleIteratorI<T> {
    *
    */
 	public rewindX(): number {
-
+		this.iterator[0]=0;
 		return 0;
 	}
 
@@ -120,7 +120,7 @@ export default abstract class DoubleIterator<T> implements DoubleIteratorI<T> {
  *
  */
 	public rewindY(): number {
-
+		this.iterator[1]=0;
 		return 0;
 	}
 
@@ -132,6 +132,11 @@ export default abstract class DoubleIterator<T> implements DoubleIteratorI<T> {
 	public getIterator(): T {
 		return this.array[this.iterator[0]][this.iterator[1]];
 	}
+
+
+
+
+
 
 
 

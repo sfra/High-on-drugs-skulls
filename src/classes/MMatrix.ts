@@ -45,6 +45,27 @@ export class MMatrix<T> extends DoubleIterator<T> {
     return out;
   }
 
+  /** 
+   * Checks if the coordinate is in the scope of x.
+   * @param {number} x coordinate
+   * @returns {boolean}
+  */
+
+  public validateX(x:number):boolean{
+
+        return  0<=x && x<this.array.length;
+  }
+
+    /** 
+   * Checks if the coordinate is in the scope of y.
+   * @param {number} y coordinate
+   * @returns {boolean}
+  */
+  public validateY(y:number):boolean {
+    return 0<=y && y<this.array[0].length;
+  }
+
+
   /**
    * Adds columns to an array.
    *
