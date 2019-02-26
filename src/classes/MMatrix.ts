@@ -1,12 +1,12 @@
 import DoubleIterator from "./DoubleIterator";
 /**
+ *
  * Class representing a 2-dimensional matrix.
  * @constructs MMatrix
  * @extends DoubleIterator
  */
 export class MMatrix<T> extends DoubleIterator<T> {
-  
-   /**
+  /**
    * Create a MMatrix.
    * @param {number} x - The x dimension of MMatrix.
    * @param {number} y - The y dimension of MMatrix.
@@ -20,22 +20,23 @@ export class MMatrix<T> extends DoubleIterator<T> {
    * @type {number}
    * @protected
    */
-  protected dx: number;
-  /**
+   protected dx: number;
+
+   /**
    * y-dimension
    * @type {number}
    * @protected
    */
+   protected dy: number;
 
-  protected dy: number;
-  /**
+   /**
    * Checks if provided data validate condition given by dx and dy.
    *
    * @param {T[][]} columns
    * @returns {boolean} `
    *
    */
-  public validateArray(columns: T[][]): boolean {
+   public validateArray(columns: T[][]): boolean {
     let out = this.dx === columns.length;
 
     for (let i = 0, max = columns.length; i < max; i++) {
@@ -45,26 +46,23 @@ export class MMatrix<T> extends DoubleIterator<T> {
     return out;
   }
 
-  /** 
+  /**
    * Checks if the coordinate is in the scope of x.
    * @param {number} x coordinate
    * @returns {boolean}
-  */
-
-  public validateX(x:number):boolean{
-
-        return  0<=x && x<this.array.length;
+   */
+  public validateX(x: number): boolean {
+    return 0 <= x && x < this.array.length;
   }
 
-    /** 
+  /**
    * Checks if the coordinate is in the scope of y.
    * @param {number} y coordinate
    * @returns {boolean}
-  */
-  public validateY(y:number):boolean {
-    return 0<=y && y<this.array[0].length;
+   */
+  public validateY(y: number): boolean {
+    return 0 <= y && y < this.array[0].length;
   }
-
 
   /**
    * Adds columns to an array.
@@ -73,7 +71,6 @@ export class MMatrix<T> extends DoubleIterator<T> {
    * @returns {boolean} `
    *
    */
-
   public consumeColumns(...columns: T[][]): any {
     if (!this.validateArray(columns)) {
       return false;
@@ -104,7 +101,6 @@ export class MMatrix<T> extends DoubleIterator<T> {
    * @param {number} x
    * @param {number} y
    * @param {T} value
-   *
    */
   public setItem(x: number, y: number, value: T): void {
     this.array[x][y] = value;
@@ -114,7 +110,6 @@ export class MMatrix<T> extends DoubleIterator<T> {
    * Returns the x-dimension.
    *
    * @returns {number} `
-   *
    */
   public getDx(): number {
     return this.dx;
@@ -124,7 +119,6 @@ export class MMatrix<T> extends DoubleIterator<T> {
    * Returns the y-dimension.
    *
    * @returns {number} `
-   *
    */
   public getDy(): number {
     return this.dy;
@@ -134,8 +128,7 @@ export class MMatrix<T> extends DoubleIterator<T> {
    * Returns the whole array.
    *
    * @returns {T[][]} `
-   *
-   */
+  */
   public getArray(): T[][] {
     return this.array;
   }
