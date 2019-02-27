@@ -28,8 +28,8 @@ describe('Deep equality', () => {
     });
 
     test('Sets and SSets', () => {
-        console.log(s0);
-        console.log(s1);
+        // console.log(s0);
+        // console.log(s1);
         expect(deepEqual(s0,s1)).toBeTruthy();
                 /**checking reference */
         b[1]='FAULT';
@@ -37,8 +37,8 @@ describe('Deep equality', () => {
         expect(deepEqual(s0,s1)).toBeTruthy();
 
         s1.add([[],[]]);
-        console.log(s0);
-        console.log(s1);
+        // console.log(s0);
+        // console.log(s1);
         expect(deepEqual(s0,s1)).toBeFalsy();
 
     });

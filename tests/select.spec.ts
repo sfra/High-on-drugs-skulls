@@ -28,6 +28,7 @@ let currentSets = [
   new SSet<[number,number]>(),new SSet<[number,number]>(),
   new SSet<[number,number]>(),new SSet<[number,number]>(),
   new SSet<[number,number]>(),new SSet<[number,number]>(),
+  new SSet<[number,number]>(),new SSet<[number,number]>(),
   new SSet<[number,number]>(),new SSet<[number,number]>()
 
 ];
@@ -37,7 +38,7 @@ let currentSets = [
   
   /*0*/
   currentSets[0].sadd([0,0]);
-  currentSets[0].sadd([0,1]);
+  currentSets[0].sadd([1,0]);
   overSetMock.add(currentSets[0]);
   currentSets[1].sadd([0,1]);
   currentSets[1].sadd([0,2]);
@@ -46,8 +47,8 @@ let currentSets = [
   currentSets[1].sadd([2,2]);
   overSetMock.add(currentSets[1]);
 
-  currentSets[2].sadd([5,0]);
-  currentSets[2].sadd([5,1]);
+  currentSets[2].sadd([0,5]);
+  currentSets[2].sadd([1,5]);
   overSetMock.add(currentSets[2]);
 
   currentSets[3].sadd([1,1]);
@@ -55,64 +56,61 @@ let currentSets = [
   overSetMock.add(currentSets[3]);
 
 
-  currentSets[4].sadd([0,2]);
-  currentSets[4].sadd([0,3]);
-  currentSets[4].sadd([0,4]);
-  currentSets[4].sadd([0,5]);
+  currentSets[4].sadd([2,0]);
+  currentSets[4].sadd([3,0]);
+  currentSets[4].sadd([4,0]);
+  currentSets[4].sadd([5,0]);
   
   overSetMock.add(currentSets[4]);
 
 
-  currentSets[5].sadd([2,4]);
-  currentSets[5].sadd([2,5]);
-  
+  currentSets[5].sadd([2,3]);
   overSetMock.add(currentSets[5]);
 
-
-  currentSets[6].sadd([3,1]);
-  currentSets[6].sadd([4,1]);
-  currentSets[6].sadd([5,1]);
-  currentSets[6].sadd([5,2]);
-  currentSets[6].sadd([4,2]);
+  currentSets[6].sadd([2,4]);
+  currentSets[6].sadd([2,5]);
+  
   overSetMock.add(currentSets[6]);
+
+
+  currentSets[7].sadd([3,1]);
+  currentSets[7].sadd([4,1]);
+  currentSets[7].sadd([4,2]);
+  currentSets[7].sadd([5,2]);
+  currentSets[7].sadd([5,1]);
+  overSetMock.add(currentSets[7]);
   
 
-  currentSets[7].sadd([3,3]);
-  currentSets[7].sadd([3,4]);
-  currentSets[7].sadd([4,3]);
-  currentSets[7].sadd([4,4]);
-  currentSets[7].sadd([5,4]);
-  overSetMock.add(currentSets[7]);
-
-  currentSets[8].sadd([3,5]);
+  currentSets[8].sadd([3,3]);
+  currentSets[8].sadd([3,4]);
+  currentSets[8].sadd([4,3]);
+  currentSets[8].sadd([4,4]);
+  currentSets[8].sadd([5,4]);
+  currentSets[8].sadd([5,3]);
   overSetMock.add(currentSets[8]);
 
-  currentSets[9].sadd([5,4]);
-  currentSets[9].sadd([5,5]);
+  currentSets[9].sadd([3,5]);
   overSetMock.add(currentSets[9]);
+
+  currentSets[10].sadd([4,5]);
+  currentSets[10].sadd([5,5]);
+  overSetMock.add(currentSets[10]);
+  currentSets[11].sadd([3,2]);
+  overSetMock.add(currentSets[11]);
+  
+  currentSets[12].sadd([0,4]);
+  currentSets[12].sadd([1,4]);
+  currentSets[12].sadd([1,3]);
+  overSetMock.add(currentSets[12]);
+
   describe('Select',()=>{
-    test('',()=>{
+    test('Equality',()=>{
 
-//      console.log(select.findCoulpes());
-   
-
-
-      expect(deepEqual(select.findCoulpes(),overSetMock)).toEqual(true);
-      expect(deepEqual(select.getNeighbourbhoods(),overSetMock)).toEqual(true);
-      expect(deepEqual(select.getAbstractClass(0,2),currentSets[1])).toBeTruthy();      
 
       
-      
-  // currentSets[1].sadd([0,1]);
-  // currentSets[1].sadd([0,2]);
-  // currentSets[1].sadd([0,3]);
-  // currentSets[1].sadd([1,2]);
-  // currentSets[1].sadd([2,2])
-      
-      // expect( select.findClass()  )
-     
+    expect(deepEqual(select.findCoulpes(),overSetMock)).toEqual(true);
 
-
+    
 
     })}
     );    
