@@ -1,5 +1,5 @@
 import { MMatrix } from './MMatrix';
-import  SSet  from './SSet';
+import SSet from './SSet';
 import deepEqual from '../helpers/deepEqual';
 /**
  *
@@ -8,10 +8,10 @@ import deepEqual from '../helpers/deepEqual';
  */
 export class Select<T> {
 
-  /**
-  * Create Select.
-  * @param {MMatrix} MMatrix on which we will operate
-  */
+    /**
+    * Create Select.
+    * @param {MMatrix} MMatrix on which we will operate
+    */
     constructor(mmatrix: MMatrix<T>) {
         this.array = mmatrix.getArray();
         this.mmatrix = mmatrix;
@@ -53,21 +53,21 @@ export class Select<T> {
     * @type {Set<SSet<[number,number]>>}
     * @private
     */
-    private neighborhoods: Set<SSet<[number,number]>>;
+    private neighborhoods: Set<SSet<[number, number]>>;
 
 
     /**
      * Neighborhoods getter. Setter is not needed
      * @returns {Set<SSet<[number, number]>>} quotient set defined by a given equvalence
-     */    
-    public getNeighbourbhoods():Set<SSet<[number,number]>>{
+     */
+    public getNeighbourbhoods(): Set<SSet<[number, number]>> {
         return this.neighborhoods;
     };
 
 
-    public getAbstractClass(x:number,y:number):SSet<[number,number]>{
-        return new SSet<[number,number]>();
-    } 
+    public getAbstractClass(x: number, y: number): SSet<[number, number]> {
+        return new SSet<[number, number]>();
+    }
 
 
     // /**
@@ -96,21 +96,21 @@ export class Select<T> {
        * @returns {boolean} always false, according to the lambda usage
        *
        */
-    private addFromNeighbourhood(x: number, y: number, neighbourhood: SSet<[number, number]>, neighbourhoods:Set<SSet<[number, number]>>): boolean {
+    private addFromNeighbourhood(x: number, y: number, neighbourhood: SSet<[number, number]>, neighbourhoods: Set<SSet<[number, number]>>): boolean {
 
         neighbourhood.sadd([x, y]);
         neighbourhoods.add(neighbourhood);
 
-        [[0,1], [0,-1],[1,0],[1,0]].forEach(c=>{
-            let i= c[0], j=c[1];
-            if (!this.mmatrix.validateX(x + i) || !this.mmatrix.validateY(y + j) || this.checkedArray[x + i][y + j] ) {
+        [[0, 1], [0, -1], [1, 0], [1, 0]].forEach(c => {
+            let i = c[0], j = c[1];
+            if (!this.mmatrix.validateX(x + i) || !this.mmatrix.validateY(y + j) || this.checkedArray[x + i][y + j]) {
                 return;
             }
 
 
-            (this.array[x][y] !== this.array[x + i][y + j]) ||  !neighbourhood.sadd([x + i, y + j])
-             || !(this.checkedArray[x + i][y + j] = true)
-             || this.addFromNeighbourhood(x + i, y + j, neighbourhood,neighbourhoods);
+            (this.array[x][y] !== this.array[x + i][y + j]) || !neighbourhood.sadd([x + i, y + j])
+                || !(this.checkedArray[x + i][y + j] = true)
+                || this.addFromNeighbourhood(x + i, y + j, neighbourhood, neighbourhoods);
 
 
         });
@@ -131,26 +131,13 @@ export class Select<T> {
         for (let i: number = 0, max: number = this.array.length; i < max; i++) {
             for (let j: number = 0, max0: number = this.array[0].length; j < max0; j++) {
                 (this.checkedArray[i][j]) || !(this.checkedArray[i][j] = true) ||
-                 !currentNeighbourhoodArr.push(new SSet<[number, number]>()) ||
-                  this.addFromNeighbourhood(i, j, currentNeighbourhoodArr[currentNeighbourhoodArr.length - 1],neighbourhoods);
+                    !currentNeighbourhoodArr.push(new SSet<[number, number]>()) ||
+                    this.addFromNeighbourhood(i, j, currentNeighbourhoodArr[currentNeighbourhoodArr.length - 1], neighbourhoods);
 
             }
         }
         this.neighborhoods = neighbourhoods;
         return neighbourhoods;
     }
-
-
-    
-
-
-
-
-
-
-
-
-
-
 
 }

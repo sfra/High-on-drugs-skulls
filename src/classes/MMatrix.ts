@@ -5,12 +5,12 @@ import DoubleIterator from "./DoubleIterator";
  * @extends DoubleIterator
  */
 export class MMatrix<T> extends DoubleIterator<T> {
-  
-   /**
-   * Create a MMatrix.
-   * @param {number} x - The x dimension of MMatrix.
-   * @param {number} y - The y dimension of MMatrix.
-   */
+
+  /**
+  * Create a MMatrix.
+  * @param {number} x - The x dimension of MMatrix.
+  * @param {number} y - The y dimension of MMatrix.
+  */
   public constructor(x: number, y: number) {
     super(x, y);
   }
@@ -51,18 +51,18 @@ export class MMatrix<T> extends DoubleIterator<T> {
    * @returns {boolean}
   */
 
-  public validateX(x:number):boolean{
+  public validateX(x: number): boolean {
 
-        return  0<=x && x<this.array.length;
+    return 0 <= x && x < this.array.length;
   }
 
-    /** 
-   * Checks if the coordinate is in the scope of y.
-   * @param {number} y coordinate
-   * @returns {boolean}
-  */
-  public validateY(y:number):boolean {
-    return 0<=y && y<this.array[0].length;
+  /** 
+ * Checks if the coordinate is in the scope of y.
+ * @param {number} y coordinate
+ * @returns {boolean}
+*/
+  public validateY(y: number): boolean {
+    return 0 <= y && y < this.array[0].length;
   }
 
 

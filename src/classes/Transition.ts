@@ -1,53 +1,53 @@
 import { MMatrix } from './MMatrix';
 import { Select } from './Select';
-import  SSet from './SSet';
+import SSet from './SSet';
 
 export class Transition<T> {
-    constructor(mmatrix:MMatrix<T>,uppermmatrix:MMatrix<T>) {
+    constructor(mmatrix: MMatrix<T>, uppermmatrix: MMatrix<T>) {
 
-        this.mmatrix =  mmatrix;
+        this.mmatrix = mmatrix;
         this.uppermatrix = uppermmatrix;
 
         this.select = new Select<T>(this.mmatrix);
-        
+
     }
 
     private mmatrix: MMatrix<T>;
-    private uppermatrix:MMatrix<T>;
-    private selected:Set<SSet<[number,number]>>;
+    private uppermatrix: MMatrix<T>;
+    private selected: Set<SSet<[number, number]>>;
 
-    private select:Select<T>;
-    public getMmatrix ():MMatrix<T>{
+    private select: Select<T>;
+    public getMmatrix(): MMatrix<T> {
 
         return this.mmatrix;
     }
 
-    public setMmatrix(mmatrix:MMatrix<T>) {
+    public setMmatrix(mmatrix: MMatrix<T>) {
         this.mmatrix = mmatrix;
     }
 
 
-    public getUpperMmatrix ():MMatrix<T>{
+    public getUpperMmatrix(): MMatrix<T> {
 
         return this.uppermatrix;
     }
 
-    public setUpperMmatrix(uppermmatrix:MMatrix<T>) {
+    public setUpperMmatrix(uppermmatrix: MMatrix<T>) {
         this.uppermatrix = uppermmatrix;
     }
 
-    public markSelected(x:number,y:number) {
+    public markSelected(x: number, y: number) {
         this.selected = this.select.findCoulpes();
-    
-         
-    }
 
-    public run(x:number,y:number):void{
 
     }
 
-    public runSpecial(x:number,y:number,sset:Set<SSet<[number, number]>>):void{
-        
+    public run(x: number, y: number): void {
+
+    }
+
+    public runSpecial(x: number, y: number, sset: Set<SSet<[number, number]>>): void {
+
     }
 
 
