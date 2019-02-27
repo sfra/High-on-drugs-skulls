@@ -1,7 +1,8 @@
 import { MMatrix } from '../src/classes/MMatrix';
 import { Select } from '../src/classes/Select';
 import  SSet from '../src/classes/SSet';
-const fs=require('fs');
+import deepEqual from '../src/helpers/deepEqual';
+
 
 const mm = new MMatrix<number>(6,6);
 
@@ -92,7 +93,9 @@ let currentSets = [
   describe('Select',()=>{
     test('',()=>{
 
-      // expect(eqSet(select.findCoulpes(),overSetMock)).toEqual(true);
+      console.log(select.findCoulpes());
+
+      expect(deepEqual(select.findCoulpes(),overSetMock)).toEqual(true);
 
 
      

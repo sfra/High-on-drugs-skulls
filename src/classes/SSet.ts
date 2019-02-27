@@ -4,35 +4,32 @@
  * @constructs MMatrix
  * @extends Set
  */
-
 export default class SSet<T> extends Set<T>{
 
-    /**
-    * Create a SSet.
-    */
-     constructor(){
+    constructor(){
         super();
-        
+
     };
 
- 
-    
-   /**
-   * Defines equality between T objects. If two objects are deeply equal, and the SSet contains one of them then the second cannot be added.
-   * @type {(any, any)=>boolean}
-   */
+
+
+    /**
+    * Defines equality between T objects. If two objects are deeply equal, and the SSet contains one of them then the second cannot be added.
+    * @type {(any, any)=>boolean}
+    */
     public static equality:(a:any, b:any)=>boolean;
 
-
-    
     /**
-   * Ads element to SSet, counterpart of the method add from the Set class.
-   *
-   * @param {T} el
-   * @returns {boolean} `
-   *
-   */
+     * Ads element to SSet, counterpart of the method add from the Set class.
+     *
+     * @param {T} el
+     * @returns {boolean} `
+     *
+     */
     public sadd(el:T):SSet<T> {
+
+
+
         let contains = false;
         super.forEach((inside )=> {
             contains = contains || SSet.equality(el,inside);
@@ -41,8 +38,8 @@ export default class SSet<T> extends Set<T>{
         if(!contains) {
             super.add(el);
         }
-        
+
         return this;
     }
-    
+
 }
