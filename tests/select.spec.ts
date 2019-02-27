@@ -10,7 +10,7 @@ const mm = new MMatrix<number>(6,6);
 
 
 mm.consumeColumns(  
-       [0, 2, 2, 2, 3, 4],
+    [0, 2, 2, 2, 3, 4],
     [0, 3, 2, 3, 3, 4],
     [1, 3, 2, 1, 0, 0],
     [1, 2, 1, 3, 3, 2],
@@ -93,11 +93,23 @@ let currentSets = [
   describe('Select',()=>{
     test('',()=>{
 
-      console.log(select.findCoulpes());
+//      console.log(select.findCoulpes());
+   
+
 
       expect(deepEqual(select.findCoulpes(),overSetMock)).toEqual(true);
+      expect(deepEqual(select.getNeighbourbhoods(),overSetMock)).toEqual(true);
+      expect(deepEqual(select.getAbstractClass(0,2),currentSets[1])).toBeTruthy();      
 
-
+      
+      
+  // currentSets[1].sadd([0,1]);
+  // currentSets[1].sadd([0,2]);
+  // currentSets[1].sadd([0,3]);
+  // currentSets[1].sadd([1,2]);
+  // currentSets[1].sadd([2,2])
+      
+      // expect( select.findClass()  )
      
 
 

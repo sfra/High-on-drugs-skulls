@@ -48,10 +48,36 @@ export class Select<T> {
     */
     private order: (a: T, b: T) => boolean;
 
+    /**
+    * The family of equivalence classes
+    * @type {Set<SSet<[number,number]>>}
+    * @private
+    */
+    private neighborhoods: Set<SSet<[number,number]>>;
 
-    public setOrdering(order: (a: T, b: T) => boolean): void {
-        this.order = order;
-    }
+
+    /**
+     * Neighborhoods getter. Setter is not needed
+     * @returns {Set<SSet<[number, number]>>} quotient set defined by a given equvalence
+     */    
+    public getNeighbourbhoods():Set<SSet<[number,number]>>{
+        return this.neighborhoods;
+    };
+
+
+    public getAbstractClass(x:number,y:number):SSet<[number,number]>{
+        return new SSet<[number,number]>();
+    } 
+
+
+    // /**
+    //  * Neighborhoods getter. Setter is not needed
+    //  * @returns {Set<SSet<[number, number]>>} quotient set defined by a given equvalence
+    //  */ 
+    // public setOrdering(order: (a: T, b: T) => boolean): void {
+    //     this.order = order;
+
+    // }
 
     /**
      * Two dimmensional boolean matrix containing false if the membership of element from mmatrix has been approved
@@ -110,8 +136,21 @@ export class Select<T> {
 
             }
         }
-
+        this.neighborhoods = neighbourhoods;
         return neighbourhoods;
     }
+
+
+    
+
+
+
+
+
+
+
+
+
+
 
 }

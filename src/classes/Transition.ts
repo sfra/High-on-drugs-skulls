@@ -4,13 +4,19 @@ import  SSet from './SSet';
 
 export class Transition<T> {
     constructor(mmatrix:MMatrix<T>,uppermmatrix:MMatrix<T>) {
+
         this.mmatrix =  mmatrix;
         this.uppermatrix = uppermmatrix;
+
+        this.select = new Select<T>(this.mmatrix);
+        
     }
 
     private mmatrix: MMatrix<T>;
     private uppermatrix:MMatrix<T>;
+    private selected:Set<SSet<[number,number]>>;
 
+    private select:Select<T>;
     public getMmatrix ():MMatrix<T>{
 
         return this.mmatrix;
@@ -30,8 +36,10 @@ export class Transition<T> {
         this.uppermatrix = uppermmatrix;
     }
 
-    public markSelected() {
-
+    public markSelected(x:number,y:number) {
+        this.selected = this.select.findCoulpes();
+    
+         
     }
 
     public run(x:number,y:number):void{
