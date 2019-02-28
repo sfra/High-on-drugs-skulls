@@ -34,7 +34,7 @@ let currentSets = [
   new SSet<[number, number]>()
 ];
 
-/*0*/
+
 currentSets[0].sadd([0, 0]);
 currentSets[0].sadd([1, 0]);
 overSetMock.add(currentSets[0]);
@@ -65,7 +65,6 @@ overSetMock.add(currentSets[5]);
 
 currentSets[6].sadd([2, 4]);
 currentSets[6].sadd([2, 5]);
-
 overSetMock.add(currentSets[6]);
 
 currentSets[7].sadd([3, 1]);
