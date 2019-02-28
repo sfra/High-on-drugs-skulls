@@ -20,5 +20,14 @@ describe('SSet',()=>{
       expect(sset.size).toEqual(2);
       sset.sadd({x:11,y:['a',44]});
       expect(sset.size).toEqual(2);
+
+      expect(sset.contains([0,1]));
+
+      sset.add(3);
+
+      expect(sset.contains(3)).toBeTruthy();
+      expect(sset.contains({x:11,y:['a',44]})).toBeTruthy();
+      expect(sset.contains({x:11,y:['a',-44]})).toBeFalsy();
+
     });
 });

@@ -43,7 +43,13 @@ export class Transition<T> {
     }
 
     public run(x: number, y: number): void {
+        let container:SSet<[number,number]> | null;
 
+        for(let cur of this.selected){
+         ///   if(cur.contains())
+        }
+
+ 
     }
 
     public runSpecial(x: number, y: number, sset: Set<SSet<[number, number]>>): void {

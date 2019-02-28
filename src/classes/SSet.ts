@@ -11,8 +11,6 @@ export default class SSet<T> extends Set<T>{
 
     };
 
-
-
     /**
     * Defines equality between T objects. If two objects are deeply equal, and the SSet contains one of them then the second cannot be added.
     * @type {(any, any)=>boolean}
@@ -40,6 +38,16 @@ export default class SSet<T> extends Set<T>{
         }
 
         return this;
+    }
+
+
+    public contains(el:T) {
+        for(let ob of this) {
+            if(SSet.equality(ob,el)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
