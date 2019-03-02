@@ -16,6 +16,7 @@ export class Select<T> {
         this.array = mmatrix.getArray();
         this.mmatrix = mmatrix;
         this.checkedArray = [];
+        Select.equivalence = Select.equivalence || ((x:T,y:T)=> x===y);
 
         /** init an array filled by falses*/
 
@@ -46,14 +47,19 @@ export class Select<T> {
     * @type {(a: T, b: T) => boolean}
     * @private
     */
-    private order: (a: T, b: T) => boolean;
+    private static equivalence: (a: any, b: any) => boolean;
 
     /**
     * The family of equivalence classes
-    * @type {Set<SSet<[number,number]>>}
+    public static setEquivalence(equiv:((x:number,y:number)=>{}):boolean):void{
     * @private
     */
     private neighborhoods: Set<SSet<[number, number]>>;
+
+
+    public static setEquivalence(equiv:(x:any,y:any)=>boolean):void{
+        Select.equivalence = equiv;
+    }
 
 
     /**
@@ -70,14 +76,7 @@ export class Select<T> {
     }
 
 
-    // /**
-    //  * Neighborhoods getter. Setter is not needed
-    //  * @returns {Set<SSet<[number, number]>>} quotient set defined by a given equvalence
-    //  */ 
-    // public setOrdering(order: (a: T, b: T) => boolean): void {
-    //     this.order = order;
-
-    // }
+ 
 
     /**
      * Two dimmensional boolean matrix containing false if the membership of element from mmatrix has been approved
@@ -108,7 +107,7 @@ export class Select<T> {
             }
 
 
-            (this.array[x][y] !== this.array[x + i][y + j]) || !neighbourhood.sadd([x + i, y + j])
+            (!Select.equivalence(this.array[x][y],this.array[x + i][y + j])) || !neighbourhood.sadd([x + i, y + j])
                 || !(this.checkedArray[x + i][y + j] = true)
                 || this.addFromNeighbourhood(x + i, y + j, neighbourhood, neighbourhoods);
 

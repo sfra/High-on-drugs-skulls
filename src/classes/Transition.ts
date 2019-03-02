@@ -46,8 +46,13 @@ export class Transition<T> {
         let container:SSet<[number,number]> | null;
 
         for(let cur of this.selected){
-         ///   if(cur.contains())
+            if(cur.contains([x,y])) {
+                container = cur;
+                break;
+            }
         }
+
+
 
  
     }

@@ -1,4 +1,5 @@
 import { MMatrix } from '../src/classes/MMatrix';
+import Tile from '../src/classes/Tile';
 
 describe('MMatrix test', () => {
   let mm=new MMatrix(3,2);
@@ -18,7 +19,7 @@ describe('MMatrix test', () => {
   });
   test('Check iterator',()=>{
 
-    expect(mm.getIterator()).toEqual(2);
+  expect(mm.getIterator()).toEqual(2);
     expect(mm.nextX()).toBeTruthy();
     expect(mm.getIterator()).toEqual(13);
     expect(mm.hasNextY()).toBeTruthy();
@@ -38,8 +39,20 @@ describe('MMatrix test', () => {
     expect(mm.getDy()).toEqual(2);    
   });
 
-  test('Extend MMatrix',()=>{
-   // expect(mm.consumeColumns([21,33],[33,23])).toBeTruthy();
+  test('Other types',()=>{
+    let mmm= new MMatrix<Tile>(3,4);
     
+    expect(mmm.consumeColumns(
+      [new Tile('apple'),new Tile('orange'),new Tile('banana'),new Tile('apple')],
+      [new Tile('apple'),new Tile('orange'),new Tile('orange'),new Tile('apple')],
+      [new Tile('apple'),new Tile('orange'),new Tile('banana'),new Tile('apple')]
+      )).toBeTruthy();
+
+    expect(mmm.getDx()).toEqual(3);
+    expect(mmm.getDy()).toEqual(4);
+    expect(mmm.getIterator().name).toEqual('apple');
+    expect(mmm.nextY()).toEqual(true);
+    expect(mmm.getIterator().name).toEqual('orange');
+ 
   });
 });

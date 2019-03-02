@@ -1,6 +1,8 @@
 import { MMatrix } from "../src/classes/MMatrix";
 import { Select } from "../src/classes/Select";
 import SSet from "../src/classes/SSet";
+import Tile from '../src/classes/Tile';
+
 import deepEqual from "../src/helpers/deepEqual";
 
 const mm = new MMatrix<number>(6, 6);
@@ -16,23 +18,23 @@ mm.consumeColumns(
 
 const select: Select<number> = new Select<number>(mm);
 
-let overSetMock = new Set<SSet<[number, number]>>();
-let currentSets = [
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>(),
-  new SSet<[number, number]>()
-];
+let overSetMock:Set<SSet<[number,number]>> = new Set<SSet<[number, number]>>();
+  let currentSets:SSet<[number,number]>[] | null = [
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>(),
+    new SSet<[number, number]>()
+  ];
 
 
 currentSets[0].sadd([0, 0]);
@@ -96,8 +98,85 @@ currentSets[12].sadd([1, 4]);
 currentSets[12].sadd([1, 3]);
 overSetMock.add(currentSets[12]);
 
-describe("Select", () => {
-  test("Equality", () => {
+describe('Select', () => {
+  test('Find couples of simple objects', () => {
     expect(deepEqual(select.findCoulpes(), overSetMock)).toEqual(true);
   });
+
+ 
+  
+  //currentSets.fill(new SSet<[number,number]>());
+
+  test('Find couples Tiles', () => {
+    let mmm = new MMatrix<Tile>(4, 5);
+
+    mmm.consumeColumns(
+      [new Tile('apple'), new Tile('apple'), new Tile('apple'), new Tile('banana'), new Tile('banana')],
+      [new Tile('apple'), new Tile('orange'), new Tile('orange'), new Tile('banana'), new Tile('banana')],
+      [new Tile('apple'), new Tile('orange'), new Tile('orange'), new Tile('banana'), new Tile('banana')],
+      [new Tile('apple'), new Tile('orange'), new Tile('apple'), new Tile('orange'), new Tile('banana')]
+    );
+
+    let select0 = new Select<Tile>(mmm);
+    Select.setEquivalence((t, s) => t.name === s.name);
+    overSetMock.clear();
+    
+  
+       currentSets = [
+      new SSet<[number,number]>(),
+      new SSet<[number,number]>(),
+      new SSet<[number,number]>(),
+      new SSet<[number,number]>(),
+      new SSet<[number,number]>()];
+    
+      /*apple **/
+      currentSets[0].sadd([0,0]);
+      currentSets[0].sadd([1,0]);
+      currentSets[0].sadd([2,0]);
+      currentSets[0].sadd([3,0]);
+      currentSets[0].sadd([0,1]);
+      currentSets[0].sadd([0,2]);
+       overSetMock.add(currentSets[0]);
+      
+{ /* banana */
+
+      currentSets[1].sadd([0,3]);
+      currentSets[1].sadd([0,4]);
+      currentSets[1].sadd([1,3]);
+      currentSets[1].sadd([1,4]);
+      currentSets[1].sadd([2,3]);
+      currentSets[1].sadd([2,4]);
+      currentSets[1].sadd([3,4]);
+
+      
+      overSetMock.add(currentSets[1])
+}
+  { /* orange */
+    currentSets[2].sadd([1,1]);
+    currentSets[2].sadd([1,2]);
+    currentSets[2].sadd([2,1]);
+    currentSets[2].sadd([2,2]);
+    currentSets[2].sadd([3,1]);
+    overSetMock.add(currentSets[2]);
+  }
+  { /*apple */
+    currentSets[3].sadd([3,3]);
+    overSetMock.add(currentSets[3]);
+  }
+  { /* orange */
+    currentSets[4].sadd([3,2])
+    overSetMock.add(currentSets[4]);
+  }
+  
+
+
+  
+
+ expect( deepEqual(select0.findCoulpes(),overSetMock)).toBeTruthy();
+}
+
+  
+
+  );
+ 
 });
