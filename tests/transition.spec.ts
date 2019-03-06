@@ -6,7 +6,7 @@ let mm = new MMatrix<number>(5, 5);
 let upmm = new MMatrix<number>(5, 5);
 let trans = new Transition<number>(mm, upmm);
 
-mm.consumeColumns(
+mm.consumeRows(
   [0, 1, 2, 0, 0],
   [0, 1, 2, 1, 0],
   [0, 1, 3, 1, 0],
@@ -14,7 +14,7 @@ mm.consumeColumns(
   [0, 1, 2, 0, 0]
 );
 
-upmm.consumeColumns(
+upmm.consumeRows(
   [2, 1, 2, 0, 0],
   [3, 1, 2, 1, 0],
   [0, 1, 2, 1, 0],

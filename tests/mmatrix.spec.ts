@@ -6,8 +6,8 @@ describe('MMatrix test', () => {
   
   test('Check the initialization and simple functions', () => {
   
-    expect(mm.consumeColumns([3], [2, 44] )).toBeFalsy();  
-    expect(mm.consumeColumns([2,3],[13,5],[7,7])).toBeTruthy();
+    expect(mm.consumeRows([3], [2, 44] )).toBeFalsy();  
+    expect(mm.consumeRows([2,3],[13,5],[7,7])).toBeTruthy();
     expect(mm.getDx()).toEqual(3); // check dimmensionyx
     expect(mm.getDy()).toEqual(2);// check dimmension y
     expect(mm.getItem(1,1)).toEqual(5);
@@ -42,7 +42,7 @@ describe('MMatrix test', () => {
   test('Other types',()=>{
     let mmm= new MMatrix<Tile>(3,4);
     
-    expect(mmm.consumeColumns(
+    expect(mmm.consumeRows(
       [new Tile('apple'),new Tile('orange'),new Tile('banana'),new Tile('apple')],
       [new Tile('apple'),new Tile('orange'),new Tile('orange'),new Tile('apple')],
       [new Tile('apple'),new Tile('orange'),new Tile('banana'),new Tile('apple')]
@@ -54,5 +54,22 @@ describe('MMatrix test', () => {
     expect(mmm.nextY()).toEqual(true);
     expect(mmm.getIterator().name).toEqual('orange');
  
+  });
+
+  test('Consume row',()=>{
+      let mmm=new MMatrix<Tile>(3,2);
+      expect(mmm.consumeRow([new Tile('gold'),new Tile('silver')] )).toBeTruthy();
+      expect(mmm.consumeRow([new Tile('bronze'),new Tile('silver')] )).toBeTruthy();
+      expect(mmm.consumeRow([new Tile('gold')] )).toBeFalsy();
+      expect(mmm.consumeRow([new Tile('gold'), new Tile('silver'),new Tile('gold')] )).toBeFalsy();
+      expect(mmm.consumeRow([new Tile('gold'),new Tile('silver')] )).toBeTruthy();
+      expect(mmm.consumeRow([new Tile('gold'),new Tile('silver')] )).toBeFalsy();
+
+      expect(mmm.getIterator().name).toEqual('gold');
+      expect(mmm.getIterator().name==='silver').toBeFalsy();
+      mmm.nextX();
+      expect(mmm.getIterator().name).toEqual('bronze');
+ 
+
   });
 });

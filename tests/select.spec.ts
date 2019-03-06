@@ -7,7 +7,7 @@ import deepEqual from "../src/helpers/deepEqual";
 
 const mm = new MMatrix<number>(6, 6);
 
-mm.consumeColumns(
+mm.consumeRows(
   [0, 2, 2, 2, 3, 4],
   [0, 3, 2, 3, 3, 4],
   [1, 3, 2, 1, 0, 0],
@@ -110,7 +110,7 @@ describe('Select', () => {
   test('Find couples Tiles', () => {
     let mmm = new MMatrix<Tile>(4, 5);
 
-    mmm.consumeColumns(
+    mmm.consumeRows(
       [new Tile('apple'), new Tile('apple'), new Tile('apple'), new Tile('banana'), new Tile('banana')],
       [new Tile('apple'), new Tile('orange'), new Tile('orange'), new Tile('banana'), new Tile('banana')],
       [new Tile('apple'), new Tile('orange'), new Tile('orange'), new Tile('banana'), new Tile('banana')],

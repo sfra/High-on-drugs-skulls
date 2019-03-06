@@ -8,7 +8,6 @@ export default class SSet<T> extends Set<T>{
 
     constructor(){
         super();
-
     };
 
     /**
@@ -25,9 +24,6 @@ export default class SSet<T> extends Set<T>{
      *
      */
     public sadd(el:T):SSet<T> {
-
-
-
         let contains = false;
         super.forEach((inside )=> {
             contains = contains || SSet.equality(el,inside);
@@ -41,7 +37,7 @@ export default class SSet<T> extends Set<T>{
     }
 
 
-    public contains(el:T) {
+    public has(el:T) {
         for(let ob of this) {
             if(SSet.equality(ob,el)) {
                 return true;

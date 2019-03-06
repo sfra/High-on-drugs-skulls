@@ -74,7 +74,7 @@ export class MMatrix<T> extends DoubleIterator<T> {
    *
    */
 
-  public consumeColumns(...columns: T[][]): any {
+  public consumeRows(...columns: T[][]): any {
     if (!this.validateArray(columns)) {
       return false;
     }
@@ -82,6 +82,19 @@ export class MMatrix<T> extends DoubleIterator<T> {
     for (let i: number = 0, max: number = columns.length; i < max; i++) {
       this.array.push(columns[i]);
     }
+
+    return true;
+  }
+
+  public consumeRow(column:T[]):boolean{
+    if(this.array.length>= this.dx) {
+      return false;
+    } 
+    if(column.length!==this.dy) {
+      return false;
+    }
+   
+    this.array.push(column);
 
     return true;
   }
