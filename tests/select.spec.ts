@@ -37,65 +37,65 @@ let overSetMock:Set<SSet<[number,number]>> = new Set<SSet<[number, number]>>();
   ];
 
 
-currentSets[0].sadd([0, 0]);
-currentSets[0].sadd([1, 0]);
+currentSets[0].add([0, 0]);
+currentSets[0].add([1, 0]);
 overSetMock.add(currentSets[0]);
-currentSets[1].sadd([0, 1]);
-currentSets[1].sadd([0, 2]);
-currentSets[1].sadd([0, 3]);
-currentSets[1].sadd([1, 2]);
-currentSets[1].sadd([2, 2]);
+currentSets[1].add([0, 1]);
+currentSets[1].add([0, 2]);
+currentSets[1].add([0, 3]);
+currentSets[1].add([1, 2]);
+currentSets[1].add([2, 2]);
 overSetMock.add(currentSets[1]);
 
-currentSets[2].sadd([0, 5]);
-currentSets[2].sadd([1, 5]);
+currentSets[2].add([0, 5]);
+currentSets[2].add([1, 5]);
 overSetMock.add(currentSets[2]);
 
-currentSets[3].sadd([1, 1]);
-currentSets[3].sadd([2, 1]);
+currentSets[3].add([1, 1]);
+currentSets[3].add([2, 1]);
 overSetMock.add(currentSets[3]);
 
-currentSets[4].sadd([2, 0]);
-currentSets[4].sadd([3, 0]);
-currentSets[4].sadd([4, 0]);
-currentSets[4].sadd([5, 0]);
+currentSets[4].add([2, 0]);
+currentSets[4].add([3, 0]);
+currentSets[4].add([4, 0]);
+currentSets[4].add([5, 0]);
 
 overSetMock.add(currentSets[4]);
 
-currentSets[5].sadd([2, 3]);
+currentSets[5].add([2, 3]);
 overSetMock.add(currentSets[5]);
 
-currentSets[6].sadd([2, 4]);
-currentSets[6].sadd([2, 5]);
+currentSets[6].add([2, 4]);
+currentSets[6].add([2, 5]);
 overSetMock.add(currentSets[6]);
 
-currentSets[7].sadd([3, 1]);
-currentSets[7].sadd([4, 1]);
-currentSets[7].sadd([4, 2]);
-currentSets[7].sadd([5, 2]);
-currentSets[7].sadd([5, 1]);
+currentSets[7].add([3, 1]);
+currentSets[7].add([4, 1]);
+currentSets[7].add([4, 2]);
+currentSets[7].add([5, 2]);
+currentSets[7].add([5, 1]);
 overSetMock.add(currentSets[7]);
 
-currentSets[8].sadd([3, 3]);
-currentSets[8].sadd([3, 4]);
-currentSets[8].sadd([4, 3]);
-currentSets[8].sadd([4, 4]);
-currentSets[8].sadd([5, 4]);
-currentSets[8].sadd([5, 3]);
+currentSets[8].add([3, 3]);
+currentSets[8].add([3, 4]);
+currentSets[8].add([4, 3]);
+currentSets[8].add([4, 4]);
+currentSets[8].add([5, 4]);
+currentSets[8].add([5, 3]);
 overSetMock.add(currentSets[8]);
 
-currentSets[9].sadd([3, 5]);
+currentSets[9].add([3, 5]);
 overSetMock.add(currentSets[9]);
 
-currentSets[10].sadd([4, 5]);
-currentSets[10].sadd([5, 5]);
+currentSets[10].add([4, 5]);
+currentSets[10].add([5, 5]);
 overSetMock.add(currentSets[10]);
-currentSets[11].sadd([3, 2]);
+currentSets[11].add([3, 2]);
 overSetMock.add(currentSets[11]);
 
-currentSets[12].sadd([0, 4]);
-currentSets[12].sadd([1, 4]);
-currentSets[12].sadd([1, 3]);
+currentSets[12].add([0, 4]);
+currentSets[12].add([1, 4]);
+currentSets[12].add([1, 3]);
 overSetMock.add(currentSets[12]);
 
 describe('Select', () => {
@@ -130,41 +130,41 @@ describe('Select', () => {
       new SSet<[number,number]>()];
     
       /*apple **/
-      currentSets[0].sadd([0,0]);
-      currentSets[0].sadd([1,0]);
-      currentSets[0].sadd([2,0]);
-      currentSets[0].sadd([3,0]);
-      currentSets[0].sadd([0,1]);
-      currentSets[0].sadd([0,2]);
+      currentSets[0].add([0,0]);
+      currentSets[0].add([1,0]);
+      currentSets[0].add([2,0]);
+      currentSets[0].add([3,0]);
+      currentSets[0].add([0,1]);
+      currentSets[0].add([0,2]);
        overSetMock.add(currentSets[0]);
       
 { /* banana */
 
-      currentSets[1].sadd([0,3]);
-      currentSets[1].sadd([0,4]);
-      currentSets[1].sadd([1,3]);
-      currentSets[1].sadd([1,4]);
-      currentSets[1].sadd([2,3]);
-      currentSets[1].sadd([2,4]);
-      currentSets[1].sadd([3,4]);
+      currentSets[1].add([0,3]);
+      currentSets[1].add([0,4]);
+      currentSets[1].add([1,3]);
+      currentSets[1].add([1,4]);
+      currentSets[1].add([2,3]);
+      currentSets[1].add([2,4]);
+      currentSets[1].add([3,4]);
 
       
       overSetMock.add(currentSets[1])
 }
   { /* orange */
-    currentSets[2].sadd([1,1]);
-    currentSets[2].sadd([1,2]);
-    currentSets[2].sadd([2,1]);
-    currentSets[2].sadd([2,2]);
-    currentSets[2].sadd([3,1]);
+    currentSets[2].add([1,1]);
+    currentSets[2].add([1,2]);
+    currentSets[2].add([2,1]);
+    currentSets[2].add([2,2]);
+    currentSets[2].add([3,1]);
     overSetMock.add(currentSets[2]);
   }
   { /*apple */
-    currentSets[3].sadd([3,3]);
+    currentSets[3].add([3,3]);
     overSetMock.add(currentSets[3]);
   }
   { /* orange */
-    currentSets[4].sadd([3,2])
+    currentSets[4].add([3,2])
     overSetMock.add(currentSets[4]);
   }
   

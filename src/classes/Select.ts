@@ -97,7 +97,7 @@ export class Select<T> {
        */
     private addFromNeighbourhood(x: number, y: number, neighbourhood: SSet<[number, number]>, neighbourhoods: Set<SSet<[number, number]>>): boolean {
 
-        neighbourhood.sadd([x, y]);
+        neighbourhood.add([x, y]);
         neighbourhoods.add(neighbourhood);
 
         [[0, 1], [0, -1], [1, 0], [1, 0]].forEach(c => {
@@ -107,7 +107,7 @@ export class Select<T> {
             }
 
 
-            (!Select.equivalence(this.array[x][y],this.array[x + i][y + j])) || !neighbourhood.sadd([x + i, y + j])
+            (!Select.equivalence(this.array[x][y],this.array[x + i][y + j])) || !neighbourhood.add([x + i, y + j])
                 || !(this.checkedArray[x + i][y + j] = true)
                 || this.addFromNeighbourhood(x + i, y + j, neighbourhood, neighbourhoods);
 

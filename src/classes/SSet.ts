@@ -1,14 +1,30 @@
 /**
  *
- * An extension of Set class providing additional functionalities
+ * The Set class wrapper
  * @constructs MMatrix
- * @extends Set
  */
-export default class SSet<T> extends Set<T>{
+export default class SSet<T> {
 
     constructor(){
-        super();
+        this.set = new Set<T>();
+        this.size =0;
     };
+
+
+    /**
+    * Wrapped Set
+    * @type {Set}
+    * @private
+    */
+    private set:Set<T>;
+
+    /**
+    * The size of SSet
+    * @type {number}
+    * @private
+    */
+    public size:number;
+
 
     /**
     * Defines equality between T objects. If two objects are deeply equal, and the SSet contains one of them then the second cannot be added.
@@ -23,14 +39,23 @@ export default class SSet<T> extends Set<T>{
      * @returns {boolean} `
      *
      */
-    public sadd(el:T):SSet<T> {
+    public add(el:T):SSet<T> {
         let contains = false;
-        super.forEach((inside )=> {
-            contains = contains || SSet.equality(el,inside);
-        });
+        
+
+        for(let ob of this.set) {
+            contains = contains || SSet.equality(ob,el);
+            if(contains) {
+                break;
+            }
+        }
+
+        
+
 
         if(!contains) {
-            super.add(el);
+            this.set.add(el);
+            this.size+=1;
         }
 
         return this;
@@ -38,12 +63,16 @@ export default class SSet<T> extends Set<T>{
 
 
     public has(el:T) {
-        for(let ob of this) {
+        for(let ob of this.set) {
             if(SSet.equality(ob,el)) {
                 return true;
             }
         }
         return false;
     }
+
+
+
+
 
 }

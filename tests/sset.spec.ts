@@ -8,16 +8,16 @@ let sset = new SSet();
 
 describe('SSet',()=>{
     test('add',()=>{
-      sset.sadd([0,1]);
+      sset.add([0,1]);
       expect(sset.size).toEqual(1);
-      
-      sset.sadd([0,1]);
-      expect(sset.size).toEqual(1); 
 
-      sset.sadd({x:11,y:['a',44]});
+      sset.add([0,1]);
+      expect(sset.size).toEqual(1);
+
+      sset.add({x:11,y:['a',44]});
       expect(sset.size).toEqual(2);
 
-      sset.sadd({x:11,y:['a',44]});
+      sset.add({x:11,y:['a',44]});
       expect(sset.size).toEqual(2);
 
       expect(sset.has([0,1]));
@@ -29,4 +29,18 @@ describe('SSet',()=>{
       expect(sset.has({x:11,y:['a',-44]})).toBeFalsy();
 
     });
+
+    /*    test('forEach',()=>{
+      let s= new SSet<Array<number>>();
+
+      s.add([8,56,-1]);
+      s.add([4,1]);
+      console.log(s);
+      s.forEach((item)=>{
+        console.log(item);
+      });
+
+
+
+      });*/
 });
