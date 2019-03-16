@@ -24,6 +24,12 @@
             "program": "${workspaceFolder}/src/index.ts",
             "preLaunchTask": "tsc: build - tsconfig.json",
             "outFiles": ["${workspaceFolder}/js/**/*.js"],
+            "runtimeExecutable": "/home/szymon/usrRoot/usr/local/bin/node",
+            "skipFiles": [
+                "node_modules/**/*.js",
+                "<node_internals>/**/*.js",
+                "js/**/*.js"
+            ]
             
         }
     ]

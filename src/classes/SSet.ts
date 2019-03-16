@@ -1,7 +1,7 @@
 /**
  *
  * The Set class wrapper
- * @constructs MMatrix
+ * @constructs SSet of type T
  */
 export default class SSet<T> {
 
@@ -41,7 +41,7 @@ export default class SSet<T> {
      */
     public add(el:T):SSet<T> {
         let contains = false;
-        
+
 
         for(let ob of this.set) {
             contains = contains || SSet.equality(ob,el);
@@ -50,7 +50,7 @@ export default class SSet<T> {
             }
         }
 
-        
+
 
 
         if(!contains) {
@@ -69,8 +69,23 @@ export default class SSet<T> {
             }
         }
         return false;
-    }
+        }
 
+
+        public forEach(callbackfn:(el:T)=>void){
+        this.set.forEach((el)=>{callbackfn(el)});
+        }
+
+
+        public entries():IterableIterator<[T,T]> {
+          return this.set.entries();
+        }
+
+
+        public toArray():T[]{
+
+            return Array.from(this.set);
+        }
 
 
 

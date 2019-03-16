@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node js/index.js",
+    "start": "tsc && node js/index.js",
     "test": "jest",
     "visual": "tsuml --glob ./src/classes/**/*.ts",
     "doc": "jsdoc -c jsdoc.json -d docs js/classes/"
